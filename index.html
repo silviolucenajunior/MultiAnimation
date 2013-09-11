@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+</head>
+<body>
+<div id="app-test">
+   <div id="container-1">
+      <div class="active-item">
+         <p>Container 1 - Item 1</p>
+      </div>
+      <div>
+         <p>Container 1 - Item 2</p>
+      </div>
+   </div>
+   <div id="container-2">
+      <div class="active-item">
+         <p>Container 2 - Item 1</p>
+      </div>
+      <div>
+         <p>Container 2 - Item 2</p>
+      </div>
+   </div>
+</div>
+
+<a href="#" id="next-btn">Next</a>
+<a href="#" id="previous-btn">Prev</a>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="jquery-animation-plugin.js"></script>
+<script>
+   var animator = null;
+
+   function fade_animation(active_item, next_item){
+      $(active_item).fadeOut("slow").removeClass("active-item");
+      $(next_item).fadeIn("slow").addClass("active-item");
+   }
+
+   $(document).ready(function(){
+ /*     animator = new AnimationPlugin();
+      animator.addSelector("#container-1");
+      animator.addSelector("#container-2");
+      animator.setAnimation(fade_animation); */
+      $("#container-1,#container-2").MultiAnimation({
+         next_button: "#next-btn",
+         previous_button: "#previous-btn",
+         animation_function: fade_animation
+      });
+   });
+</script>
+</body>
+</html>
